@@ -1,11 +1,11 @@
 # JDI Light project template
-For run new UI test autoamtion just download and open this project
+For run new UI test automation just download and open this project
 Powered by [JDI Light](https://github.com/jdi-testing/jdi-light) and Selenium
 
 # Instruction:
 1. Download template and unpack in appropriate folder
 
-2. Open project in IDE (for exampel IntelliJIdea)
+2. Open project in IDE (for example IntelliJIdea)
 
 3. For running demo test just use "mvn clean install" command
 http://pix.my/o/fkSH1s?1547398376
@@ -15,11 +15,10 @@ http://pix.my/o/SJtkya?1547398292
 4. Logs: Observe test run results in Console log
 http://pix.my/o/CEtiOQ?1547398216
 
-5. Reporting: After running tests copy paste **allure-results** folder in to target folder. Run **allure:serve** in maven plugins
+5. Reporting: When test run finished just run **allure:serve** in maven plugins
 http://pix.my/o/5KPsyr?1547398089
 
 6. Use as template for your project: 
-* just remove all content from **src/main/.../example** folder, add your package you Page Objects
-* replace tests in **src/test/.../example** folder with your tests
-
-7. TestNg Retry and before after listners: You can also modify rules of retry tests (now it is 1 retry for each test) and actions before/after all tests (now it prints test name and result) in **org.mytests.tests.testng** folder
+* just remove all content from **src/test/resources/features** folder, and add your features
+* replace steps in  in **src/test/.../steps** folder with your steps
+* place json page objects and data in **src/test/resources/jsom** folder
