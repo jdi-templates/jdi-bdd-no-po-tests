@@ -21,7 +21,7 @@ import static com.epam.jdi.light.elements.init.UIFactory.$;
 public class RunnerTest {
 
     @BeforeClass()
-    public void setUp() {
+    public static void setUp() {
 
         WebPage.openUrl("https://jdi-testing.github.io/jdi-light/");
         $("img#user-icon").click();
@@ -30,7 +30,7 @@ public class RunnerTest {
 
 
     @AfterClass()
-    public void tearDownClass() {
+    public static void tearDownClass() {
         killAllSeleniumDrivers();
     }
 }
