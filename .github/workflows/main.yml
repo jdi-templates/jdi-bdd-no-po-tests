@@ -84,3 +84,9 @@ jobs:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_BRANCH: gh-pages
           PUBLISH_DIR: allure-history
+
+      - name: Check tests are passed
+        if: ${{ steps.ftests.outcome != 'success' }}
+        run: |
+          echo Tests result: ${{ steps.ftests.outcome }}
+          exit 1
