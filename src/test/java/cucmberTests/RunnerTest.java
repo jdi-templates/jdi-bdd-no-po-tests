@@ -5,9 +5,9 @@ import com.epam.jdi.light.elements.composite.WebPage;
 import cucmberTests.steps.User;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 
 
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
