@@ -20,6 +20,7 @@ jobs:
     name: Tests on JDK
     runs-on: ubuntu-20.04
     strategy:
+      max-parallel: 1
       fail-fast: false
       matrix:
         java: [ 8, 11, 13, 14, 15, 17, 18 ] # all [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
@@ -53,7 +54,7 @@ jobs:
       - name: Tests
         id: ftests
         timeout-minutes: 10
-        if: github.event_name == 'pull_request' && success()
+        continue-on-error: true
         run: mvn verify $WITH_PARAMS -pl com.epam.jdi:jdi-bdd-no-po-tests ${{ env.ASPECT_ARGS_BDD }} --fail-at-end
 
       - name: Get Allure history
@@ -67,7 +68,6 @@ jobs:
 
       - name: Generate Allure report
         uses: simple-elf/allure-report-action@master
-        if: github.event_name == 'pull_request' && always()
         with:
           allure_results: target/allure-results
           allure_report: target/allure-report
@@ -75,13 +75,11 @@ jobs:
 
       - name: Upload Allure report
         uses: actions/upload-artifact@master
-        if: github.event_name == 'pull_request' && failure()
         with:
           name: Allure report
           path: target/allure-report
 
       - name: Deploy Allure report to Github Pages
-        if: github.event_name == 'pull_request' && always()
         uses: peaceiris/actions-gh-pages@v2
         env:
           PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
