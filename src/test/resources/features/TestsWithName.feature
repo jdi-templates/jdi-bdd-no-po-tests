@@ -15,7 +15,7 @@ Feature: TestsWithName
     Then the "[value*='Red Button']" text equals to "Big Red Button-Input"
 
   Scenario: labelText
-    Then the "Name" label text equals to "Your name:"
+    Then the "Your Name" label text equals to "Your name:"
 
   Scenario: input element
     When I input "simple 1234" in "Name"

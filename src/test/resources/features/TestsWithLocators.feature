@@ -15,7 +15,7 @@ Feature: TestsWithLocators
     Then the "[value*='Red Button']" text equals to "Big Red Button-Input"
 
   Scenario: labelText
-    Then the "#name" label text equals to "Your name:"
+    Then the "#your-name" label text equals to "Your name:"
 
   Scenario: input element
     When I input "simple 1234" in "#name"
