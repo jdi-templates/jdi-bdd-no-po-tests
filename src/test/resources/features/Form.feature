@@ -11,7 +11,7 @@ Feature: Form
 
   Scenario: fill Contact Form from table
     When I fill form "Contact Form" with data:
-      | Name              | Roman |
+      | First Name        | Roman |
       | Last Name         | Iovlev |
       | Position          | ChiefQA |
       | Passport Number   | 654321 |
