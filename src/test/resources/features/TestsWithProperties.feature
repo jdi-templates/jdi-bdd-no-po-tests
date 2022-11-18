@@ -18,8 +18,8 @@ Feature: TestsWithProperties
     Then the "Your Name" label text equals to "Your name:"
 
   Scenario: input element
-    When I input "simple 1234" in "Name"
-    Then the "Name" text matches to "\w{6} \d{4}"
+    When I input "simple 1234" in "Your Name"
+    Then the "Your Name" text matches to "\w{6} \d{4}"
 
   Scenario: check element
     When check "Accept Conditions"
