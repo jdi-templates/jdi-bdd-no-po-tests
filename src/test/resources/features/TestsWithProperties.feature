@@ -42,8 +42,8 @@ Feature: TestsWithProperties
     Then the "Your Name" placeholder equals to "Input name"
 
   Scenario: getValue element
-    When input "simple text" in "Name"
-    Then the "Input name" text equals to "simple text"
+    When input "simple text" in "Your Name"
+    Then the "Your Name" text equals to "simple text"
 
   Scenario: getText element
     Then the "Blue Button" text equals to "BIG BLUE BUTTON"
@@ -52,7 +52,7 @@ Feature: TestsWithProperties
     Then the "Disabled Name" attribute "id" equals to "disabled-name"
 
   Scenario: isEnabled element
-    Then the "Input name" is enabled
+    Then the "Your Name" is enabled
 
   Scenario: isDisabled element
     Then the "Disabled Name" is disabled
@@ -64,10 +64,10 @@ Feature: TestsWithProperties
     Then the "Logout" does not appear
 
   Scenario: isDisplayed element
-    Then the "Input name" is displayed
+    Then the "Your Name" is displayed
 
   Scenario: setText element
-    When input "simple text" in "Input name"
-    Then the "Input name" text equals to "simple text"
-    When set text "Input text" in "Input name"
-    Then the "Input name" text equals to "Input text"
+    When input "simple text" in "Your Name"
+    Then the "Your Name" text equals to "simple text"
+    When set text "Input text" in "Your Name"
+    Then the "Your Name" text equals to "Input text"
