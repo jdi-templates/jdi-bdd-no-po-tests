@@ -5,7 +5,6 @@ name: Java CI with Maven
 env:
   ALLURE_VERSION: "2.10.0"
   WITH_PARAMS: "-ntp -Ddriver=chrome"
-  SUREFIRE_ARGS_BDD: "--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.text=ALL-UNNAMED  --add-opens=java.desktop/java.awt.font=ALL-UNNAMED"
 on:
   push:
     branches: [ master ]
@@ -23,7 +22,7 @@ jobs:
       max-parallel: 1
       fail-fast: false
       matrix:
-        java: [ 8, 11, 13, 14, 15, 17, 18 ] # all [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+        java: [ 11, 13, 14, 15, 17, 18 ] # all [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 
     steps:
       - uses: actions/checkout@v3
@@ -35,18 +34,6 @@ jobs:
           distribution: 'zulu'
           cache: 'maven'
 
-      - name: Set parameters for AspectJ
-        id: aspect_j_params
-        if: ${{ matrix.java > 15 }}
-        run: |
-          echo "ASPECT_ARGS_BDD=-Daspectj.args="\"$SUREFIRE_ARGS_BDD\" >> $GITHUB_ENV
-
-      - name: Set parameters for AspectJ
-        id: aspect_j_params_empty
-        if: ${{ matrix.java < 16 }}
-        run: |
-          echo "ASPECT_ARGS_BDD=-Daspectj.args=''" >> $GITHUB_ENV
-
       - name: Build with Maven
         id: build
         run: mvn install -DskipTests -ntp
@@ -55,7 +42,7 @@ jobs:
         id: ftests
         timeout-minutes: 10
         continue-on-error: true
-        run: mvn verify $WITH_PARAMS -pl com.epam.jdi:jdi-bdd-no-po-tests ${{ env.ASPECT_ARGS_BDD }} --fail-at-end
+        run: mvn verify $WITH_PARAMS -pl com.epam.jdi:jdi-bdd-no-po-tests --fail-at-end
 
       - name: Get Allure history
         uses: actions/checkout@v3
